@@ -24,12 +24,21 @@ public class FilmManager {
     }
 
 
+//    public FilmInfo[] getAll() {
+//        if (films.length < numberOfMovies) {
+//            numberOfMovies = films.length;
+//        }
+//        FilmInfo[] result = new FilmInfo[numberOfMovies];
+//        for (int i = 0; i < numberOfMovies; i++) {
+//            int index = films.length - i - 1;
+//            result[i] = films[index];
+//        }
+//        return result;
+//    }
+
     public FilmInfo[] getAll() {
-        if (films.length < numberOfMovies) {
-            numberOfMovies = films.length;
-        }
-        FilmInfo[] result = new FilmInfo[numberOfMovies];
-        for (int i = 0; i < numberOfMovies; i++) {
+        FilmInfo[] result = new FilmInfo[Math.min(films.length, numberOfMovies)];
+        for (int i = 0; i < result.length; i++) {
             int index = films.length - i - 1;
             result[i] = films[index];
         }
