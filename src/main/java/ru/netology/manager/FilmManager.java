@@ -4,11 +4,11 @@ import ru.netology.domain.FilmInfo;
 
 public class FilmManager {
     private FilmInfo[] films = new FilmInfo[0];
-    int n = 10;
+    int numberOfMovies = 10;
 
 
     public FilmManager(int n) {
-        this.n = n;
+        this.numberOfMovies = n;
     }
 
     public FilmManager() {
@@ -25,11 +25,11 @@ public class FilmManager {
 
 
     public FilmInfo[] getAll() {
-        if (films.length < n) {
-            n = films.length;
+        if (films.length < numberOfMovies) {
+            numberOfMovies = films.length;
         }
-        FilmInfo[] result = new FilmInfo[n];
-        for (int i = 0; i < n; i++) {
+        FilmInfo[] result = new FilmInfo[numberOfMovies];
+        for (int i = 0; i < numberOfMovies; i++) {
             int index = films.length - i - 1;
             result[i] = films[index];
         }
