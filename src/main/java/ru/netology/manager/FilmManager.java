@@ -27,28 +27,25 @@ public class FilmManager {
         films = tmp;
     }
 
-    public FilmInfo[] getAll() {
-        FilmInfo[] result = new FilmInfo[Math.min(films.length, numberOfMovies)];
-        for (int i = 0; i < result.length; i++) {
+    //вывод всех фильмов в порядке добавления
+    public FilmInfo[] findAll() {
+        return getFilms();
+    }
+
+    //вывод n фильмов в обратном порядке
+    public FilmInfo[] findLast() {
+        int resultLength = films.length;
+        if (resultLength > numberOfMovies) {
+            resultLength = numberOfMovies;
+        } else {
+            resultLength = films.length;
+        }
+        FilmInfo[] result = new FilmInfo[resultLength];
+        for (int i = 0; i < resultLength; i++) {
             int index = films.length - i - 1;
             result[i] = films[index];
         }
         return result;
     }
-
-    public void findAll() {
-        getFilms();
-    }
-
-    public void findLast() {
-        if (numberOfMovies > films.length) {
-            numberOfMovies = films.length;
-        }
-        FilmInfo[] tmp = new FilmInfo[numberOfMovies];
-        for (int i =0, j = films.length - 1; i < films.length; i++, j--) {
-            tmp[i] = films[j];
-        }
-        films = tmp;
-    }
-
 }
+
