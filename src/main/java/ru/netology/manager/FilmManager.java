@@ -4,14 +4,18 @@ import ru.netology.domain.FilmInfo;
 
 public class FilmManager {
     private FilmInfo[] films = new FilmInfo[0];
-    int numberOfMovies = 10;
+    private int numberOfMovies = 10;
 
 
-    public FilmManager(int n) {
-        this.numberOfMovies = n;
+    public FilmManager(int numberOfMovies) {
+        this.numberOfMovies = numberOfMovies;
     }
 
     public FilmManager() {
+    }
+
+    public FilmInfo[] getFilms() {
+        return films;
     }
 
     public void save(FilmInfo film) {
@@ -23,19 +27,6 @@ public class FilmManager {
         films = tmp;
     }
 
-
-//    public FilmInfo[] getAll() {
-//        if (films.length < numberOfMovies) {
-//            numberOfMovies = films.length;
-//        }
-//        FilmInfo[] result = new FilmInfo[numberOfMovies];
-//        for (int i = 0; i < numberOfMovies; i++) {
-//            int index = films.length - i - 1;
-//            result[i] = films[index];
-//        }
-//        return result;
-//    }
-
     public FilmInfo[] getAll() {
         FilmInfo[] result = new FilmInfo[Math.min(films.length, numberOfMovies)];
         for (int i = 0; i < result.length; i++) {
@@ -44,4 +35,20 @@ public class FilmManager {
         }
         return result;
     }
+
+    public void findAll() {
+        getFilms();
+    }
+
+    public void findLast() {
+        if (numberOfMovies > films.length) {
+            numberOfMovies = films.length;
+        }
+        FilmInfo[] tmp = new FilmInfo[numberOfMovies];
+        for (int i =0, j = films.length - 1; i < films.length; i++, j--) {
+            tmp[i] = films[j];
+        }
+        films = tmp;
+    }
+
 }
